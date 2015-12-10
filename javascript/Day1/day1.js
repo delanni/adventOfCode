@@ -1,33 +1,36 @@
 var require = require || null;
-if (require){
+if (require) {
     var document = require("../nodeDocumentShim");
 }
 
+// Part 1: Where did pappa land after all the steps?
+
 // One liner with reduce
-var endFloor = document.body.textContent.trim().split("").reduce((floor, letter)=> floor + ((letter == ")")?-1:1), 0);
+var endFloor = document.body.textContent.trim().split("").reduce((floor, letter) => floor + ((letter == ")") ? -1 : 1), 0);
 
 console.log(endFloor);
 
 
+// Part 2: When did pappa land on the -1st floor?
 
 // Utilizing ES6's generator
-function *getFloors(input){
+function* getFloors(input) {
     var floor = 0;
-    for (var i=0; i<input.length; i++){
-        floor += ((input[i] == ")")?-1:1);
+    for (var i = 0; i < input.length; i++) {
+        floor += ((input[i] == ")") ? -1 : 1);
         yield floor;
     }
 }
 
 // Handy generator usage to find first index of something
-getFloors.prototype.indexOf = function(target){
+getFloors.prototype.indexOf = function (target) {
     if (!this.__indexOfCache) this.__indexOfCache = {};
     if (this.__indexOfCache.hasOwnProperty(target)) return this.__indexOfCache[target];
-    
+
     var index = 0;
-    for(var val of this){
-        if (val == target){
-            this.__indexOfCache[target]=index;
+    for (var val of this) {
+        if (val == target) {
+            this.__indexOfCache[target] = index;
             return index;
         } else {
             index++
