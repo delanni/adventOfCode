@@ -6,7 +6,7 @@ if (require){
 // One liner with reduce
 var endFloor = document.body.textContent.trim().split("").reduce((floor, letter)=> floor + ((letter == ")")?-1:1), 0);
 
-console.log("Santa ended up on floor " + endFloor);
+console.log(endFloor);
 
 
 
@@ -37,4 +37,4 @@ getFloors.prototype.indexOf = function(target){
 
 var firstIndexToEnterBasement = getFloors(document.body.textContent.trim()).indexOf(-1) + 1;
 
-console.log(`Santa entered the basement at the ${firstIndexToEnterBasement} th step.`);
+console.log(`${firstIndexToEnterBasement}`);
