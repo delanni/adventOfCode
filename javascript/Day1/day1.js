@@ -2,16 +2,23 @@ var require = require || null;
 if (require) {
     var document = require("../nodeDocumentShim");
 }
+var performance = performance || Date;
 
 // Part 1: Where did pappa land after all the steps?
+
+// Algo start
+var t0 = performance.now();
 
 // One liner with reduce
 var endFloor = document.body.textContent.trim().split("").reduce((floor, letter) => floor + ((letter == ")") ? -1 : 1), 0);
 
-console.log(endFloor);
-
+var t1 = performance.now();
+console.log(`Part1: ${endFloor}, in ${t1-t0}ms`);
 
 // Part 2: When did pappa land on the -1st floor?
+
+// Algo start
+t0 = performance.now();
 
 // Utilizing ES6's generator
 function* getFloors(input) {
@@ -40,4 +47,5 @@ getFloors.prototype.indexOf = function (target) {
 
 var firstIndexToEnterBasement = getFloors(document.body.textContent.trim()).indexOf(-1) + 1;
 
-console.log(`${firstIndexToEnterBasement}`);
+var t2 = performance.now();
+console.log(`Part2: ${firstIndexToEnterBasement}, in ${t2-t0}ms`);
