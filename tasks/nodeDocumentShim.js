@@ -12,8 +12,6 @@ if (!document) {
                 textContent: input
             }
         }
-        console.log("document.body.textContent replacement ready.");
-        console.log("First line:", input);
     }
 }
 module.exports = document;
