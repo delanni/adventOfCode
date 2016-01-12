@@ -105,9 +105,9 @@ console.log(`Part1: ${machine.b}, in ${t1-t0}ms`);
 
 t1 = performance.now();
 
-machine.ip=0;
-machine.a=1;
-machine.b=0;
+machine.ip = 0;
+machine.a = 1;
+machine.b = 0;
 
 while (instruction = machine.instructions[machine.ip]) {
     if (instruction) {

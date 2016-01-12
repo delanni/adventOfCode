@@ -1,7 +1,7 @@
 var document = document || null;
 if (!document) {
     var fs = require("fs");
-    var candidateNames = fs.readdirSync(".").filter(x => x.indexOf(".js") == -1 && fs.statSync(x).size);
+    var candidateNames = fs.readdirSync(".").filter(x => x.indexOf(".txt") >= 0);
     if (candidateNames.length == 0) throw new Error("There is no input file here :( ");
     else {
         var candidate = candidateNames[0];
@@ -13,6 +13,7 @@ if (!document) {
             }
         }
         console.log("document.body.textContent replacement ready.");
+        console.log("First line:", input);
     }
 }
 module.exports = document;
